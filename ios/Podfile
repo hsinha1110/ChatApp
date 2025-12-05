@@ -14,6 +14,8 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
+use_frameworks! :linkage => :static
+
 target 'ChatApp' do
   config = use_native_modules!
 
@@ -22,7 +24,10 @@ target 'ChatApp' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
-
+  pod 'Firebase/Auth'
+  pod 'FirebaseCore'
+  pod 'FirebaseCoreInternal'
+  pod 'GoogleUtilities'
   post_install do |installer|
     react_native_post_install(
       installer,
