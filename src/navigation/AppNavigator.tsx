@@ -1,41 +1,28 @@
-import React, { FC, useState, useEffect } from 'react';
+import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { authStack, dashboardStack } from './ScreenCollections';
+import { RootStackParamList } from '../types/RootStackParamsList';
+import ScreenName from '../constants/ScreenNames';
+import SplashScreen from '../screens/auth/splash/SplashScreen';
+import LoginScreen from '../screens/auth/login/LoginScreen';
+import RegisterScreen from '../screens/auth/register/RegisterScreen';
+import UsersScreen from '../screens/app/users/UsersScreen';
+import ChatScreen from '../screens/app/chats/ChatScreen';
 
-const Stack = createNativeStackNavigator();
-
-const MainNavigator: FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
-  useEffect(() => {
-    const checkAuthStatus = async () => {
-      const authStatus = false;
-      setIsAuthenticated(authStatus);
-    };
-
-    checkAuthStatus();
-  }, []);
-
-  const currentStack = isAuthenticated ? dashboardStack : authStack;
+const AppNavigator = () => {
+  const Stack = createNativeStackNavigator<RootStackParamList>();
 
   return (
-    <Stack.Navigator
-      initialRouteName="SplashScreen"
-      screenOptions={() => ({
-        headerShown: false,
-      })}
-    >
-      {currentStack.map((item, index) => {
-        return (
-          <Stack.Screen
-            key={index}
-            name={item.name}
-            component={item.component}
-          />
-        );
-      })}
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name={ScreenName.SplashScreen} component={SplashScreen} />
+      <Stack.Screen name={ScreenName.LoginScreen} component={LoginScreen} />
+      <Stack.Screen
+        name={ScreenName.RegisterScreen}
+        component={RegisterScreen}
+      />
+      <Stack.Screen name={ScreenName.UsersScreen} component={UsersScreen} />
+      <Stack.Screen name={ScreenName.ChatScreen} component={ChatScreen} />
     </Stack.Navigator>
   );
 };
 
-export default MainNavigator;
+export default AppNavigator;

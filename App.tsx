@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler';
 import React from 'react';
 import Navigation from './src/navigation/Navigation';
 import { Platform, StatusBar } from 'react-native';

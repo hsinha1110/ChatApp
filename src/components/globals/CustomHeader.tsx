@@ -1,7 +1,8 @@
-import { View, Pressable, Image, StyleSheet } from 'react-native';
+import { View, Pressable, Image, StyleSheet, Text } from 'react-native';
 import React, { FC } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { moderateScale } from 'react-native-size-matters';
+import { Colors } from '../../constants/Colors';
 
 interface HeaderProps {
   title?: string;
@@ -27,7 +28,9 @@ const CustomHeader: FC<HeaderProps> = ({
           />
         </Pressable>
       ) : (
-        <View style={styles.placeholder} />
+        <View style={styles.placeholder}>
+          <Text style={{ color: Colors.black }}>{title}</Text>
+        </View>
       )}
     </View>
   );

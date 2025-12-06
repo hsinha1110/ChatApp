@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { moderateScale } from 'react-native-size-matters';
+import { FONTS } from '../../../constants/Fonts';
+import { Colors } from '../../../constants/Colors';
 
 const styles = StyleSheet.create({
   container: { flex: 1 },
@@ -13,6 +15,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 8,
     elevation: 4,
+  },
+  titleText: {
+    fontFamily: FONTS.Bold,
+    fontSize: 30,
+    color: Colors.white,
   },
 });
 export default styles;

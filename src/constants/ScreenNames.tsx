@@ -3,6 +3,7 @@ export enum ScreenName {
   LoginScreen = 'LoginScreen',
   RegisterScreen = 'RegisterScreen',
   UsersScreen = 'UsersScreen',
+  ChatScreen = 'ChatScreen',
 }
 
 export default ScreenName;

@@ -7,6 +7,7 @@ interface CustomInputProps extends TextInputProps {
   label: string;
   error?: boolean;
   errorMessage?: string;
+  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
 }
 
 const CustomInput: FC<CustomInputProps> = ({
@@ -14,6 +15,7 @@ const CustomInput: FC<CustomInputProps> = ({
   containerStyle,
   error,
   errorMessage,
+  autoCapitalize,
   ...rest
 }) => {
   return (
@@ -22,12 +24,13 @@ const CustomInput: FC<CustomInputProps> = ({
         mode="outlined"
         label={label}
         style={styles.input}
+        autoCapitalize={autoCapitalize}
         outlineColor={error ? stylesProps.errorColor : stylesProps.outlineColor}
         activeOutlineColor={
           error ? stylesProps.errorColor : stylesProps.activeOutlineColor
         }
         error={error}
-        {...rest}
+        {...rest} // spreads all other TextInput props
       />
 
       {error && errorMessage ? (
